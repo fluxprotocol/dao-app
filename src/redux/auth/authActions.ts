@@ -26,10 +26,11 @@ export function authUser(accountId: string) {
 }
 
 export function checkUserAuth(accountId: string) {
-    return async (dispatch: Function) => {
+    return async (dispatch: Function): Promise<boolean> => {
         const contract = await createAuthContract();
         dispatch(setAuthLoading(true));
-        await contract.canAuthenticate(accountId);
+        let authenticated = await contract.isAuthenticated(accountId);
         dispatch(setAuthLoading(false));
+        return authenticated;
     }
 }

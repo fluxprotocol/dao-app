@@ -11,6 +11,7 @@
     "menu.logout": "Logout",
     "menu.item.home": "Home",
     "menu.item.council": "Council",
+    "menu.item.auth": "Authenticate user",
 
     "council.title": "Council",
 
@@ -42,5 +43,8 @@
     "proposalDialog.title": "Create a proposal",
     "proposalDialog.types.newCouncil": "New council",
     "proposalDialog.types.addTokenWhitelist": "Add token to the whitelist",
-    "proposalDialog.types.resoluteMarket": "Resolute market"
+    "proposalDialog.types.resoluteMarket": "Resolute market",
+    
+    "auth.dialog.title": "Authenticate user",
+    "auth.form.input.accountId": "example.near"
 }

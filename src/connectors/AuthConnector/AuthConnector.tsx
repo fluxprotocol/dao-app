@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AuthDialog from '../../containers/AuthDialog';
-import { loadAuth } from '../../redux/auth/authActions';
+import { authUser, checkUserAuth, loadAuth } from '../../redux/auth/authActions';
 import { Reducers } from '../../redux/reducers';
 
 export default function CouncilConnector() {
@@ -14,8 +14,18 @@ export default function CouncilConnector() {
         dispatch(loadAuth(accountInfo.accountId));
     }, [accountInfo]);
     
+    async function handleSubmit(accountId: string) {
+        let userIsAuth = await checkUserAuth(accountId)(dispatch);
+        if (userIsAuth) {
+            return console.error("user is already authenticated")
+        }
+        dispatch(authUser(accountId));
+    }
 
     return (
-        <AuthDialog canAuthenticate={auth}/>
+        <AuthDialog
+            canAuthenticate={auth}
+            onSubmit={handleSubmit}
+        />
     );
 }

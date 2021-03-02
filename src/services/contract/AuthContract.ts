@@ -14,18 +14,16 @@ class AuthInstance {
         });
     }
 
-    async isAuthenticated(): Promise<string[]> {
+    async isAuthenticated(accountId: string): Promise<boolean> {
         // @ts-ignore
-        const result = await this.contract.is_authenticated({account_id: "fluxio.near"});
+        const result = await this.contract.is_authenticated({account_id: accountId});
 
         return result;
     }
 
     async canAuthenticate(accountId: string): Promise<boolean> {
-        console.log(accountId)
         // @ts-ignore
-        const result = await this.contract.can_authenticate({account_id: "flipper.near"});
-        console.log(result)
+        const result = await this.contract.can_authenticate({account_id: accountId});
 
         return result;
     }
@@ -33,7 +31,7 @@ class AuthInstance {
     async addAuthenticatee(accountId: string) {
         // @ts-ignore
         const result = await this.contract.add_authenticatee({ 
-            account_id: "fluxio.near"
+            account_id: accountId
         }, MAX_GAS, new BN(0))
 
         return result;

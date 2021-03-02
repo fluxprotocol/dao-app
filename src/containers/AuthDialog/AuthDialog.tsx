@@ -6,11 +6,13 @@ import AuthForm from './AuthForm';
 import createDefaultAuthFormValues, { NewAuthFormValues } from './services/createDefaultAuthFormValues';
 interface Props {
     canAuthenticate: boolean;
+    onSubmit: (accountId: string) => void;
 }
 
 
 export default function AuthContainer({
     canAuthenticate,
+    onSubmit
 }: Props) {
     const history = useHistory();
     const [authFormValues, setAuthFormValues] = useState(createDefaultAuthFormValues);
@@ -27,7 +29,7 @@ export default function AuthContainer({
             title={trans("auth.dialog.title")}
             open={true}
             onRequestClose={() => history.push("/")}
-            onSubmitClick={() =>{}}
+            onSubmitClick={() => onSubmit(authFormValues.accountId)}
         >
             <AuthForm
                 onChange={handleAuthFormChange}
