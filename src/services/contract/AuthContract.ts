@@ -4,7 +4,7 @@ import { AUTH_ACCOUNT_ID, MAX_GAS, STORAGE_BASE } from "../../config";
 import { Proposal } from "../../models/Proposal";
 import { connectWallet } from "../WalletService";
 
-class AuthInstance {
+class AuthContract {
     contract: Contract;
 
     constructor(account: Account) {
@@ -39,15 +39,15 @@ class AuthInstance {
 }
 
 
-let authInstance: AuthInstance;
+let authContract: AuthContract;
 
-export default async function createAuthContract(): Promise<AuthInstance> {
-    if (authInstance) {
-        return authInstance;
+export default async function createAuthContract(): Promise<AuthContract> {
+    if (AuthContract) {
+        return authContract;
     }
 
     const wallet = await connectWallet();
-    authInstance = new AuthInstance(wallet.account());
+    authContract = new AuthContract(wallet.account());
 
-    return authInstance;
+    return authContract;
 }
