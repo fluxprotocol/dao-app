@@ -46,5 +46,6 @@
     "proposalDialog.types.resoluteMarket": "Resolute market",
     
     "auth.dialog.title": "Authenticate user",
-    "auth.form.input.accountId": "example.near"
+    "auth.form.input.accountId": "example.near",
+    "auth.dialog.cannotAuthenticate": "No authentication rights"
 }
