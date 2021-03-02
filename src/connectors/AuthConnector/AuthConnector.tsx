@@ -15,7 +15,7 @@ export default function CouncilConnector() {
     }, [accountInfo]);
     
     async function handleSubmit(accountId: string) {
-        let userIsAuth = await checkUserAuth(accountId)(dispatch);
+        const userIsAuth = await checkUserAuth(accountId)(dispatch);
         if (userIsAuth) {
             return console.error("user is already authenticated")
         }
