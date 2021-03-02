@@ -30,6 +30,10 @@ export default function Menu({
 
             <Link to={routePaths.root()}>{trans('menu.item.home')}</Link>
             <Link to={routePaths.council()}>{trans('menu.item.council')}</Link>
+
+            {account &&(
+                <Link to={routePaths.auth()}>{trans('menu.item.auth')}</Link>
+            )}
         </section>
     );
 }
