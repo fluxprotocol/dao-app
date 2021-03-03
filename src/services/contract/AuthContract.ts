@@ -42,7 +42,7 @@ class AuthContract {
 let authContract: AuthContract;
 
 export default async function createAuthContract(): Promise<AuthContract> {
-    if (AuthContract) {
+    if (authContract) {
         return authContract;
     }
 

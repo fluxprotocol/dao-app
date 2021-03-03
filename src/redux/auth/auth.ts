@@ -14,7 +14,7 @@ const initialState: AuthState = {
 
 const authSlice = createSlice({
     initialState,
-    name: 'council',
+    name: 'auth',
     reducers: {
         setAuth(state: AuthState, action: PayloadAction<boolean>): AuthState {
             return ({
